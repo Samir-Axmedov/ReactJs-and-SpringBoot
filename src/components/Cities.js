@@ -1,5 +1,7 @@
 import React from 'react';
+import { Switch, Route, withRouter} from "react-router";
 import CityList from "./CityList"
+import Weather from "./Weather/index";
 
 const API_CITIES = 'http://localhost:8888/weather-service/available-cities';
 
@@ -9,9 +11,9 @@ class Cities extends React.Component {
     };
     componentDidMount() {
       console.log("City component");
-      console.log(this.state.cities);
+      // console.log(this.state.cities);
       const { cities } = this.state;
-      console.log(cities);
+      // console.log(cities);
       const citiesData = fetch(API_CITIES)
         .then((res) => res.json())
         .then((data) => {
@@ -19,17 +21,24 @@ class Cities extends React.Component {
             cities: data,
           });
         });
-      console.log(citiesData);
     }
     render() {
+      const { match } = this.props;
       const { cities } = this.state;
       return (
         <div>
           <h1>Cities</h1>
           <p>City list</p>
-          <CityList cities={cities} />
+          <Switch>
+            <Route
+              exact
+              path={match.path}
+              render={() => <CityList cities={cities} />}
+            />
+            <Route path={`${match.path}/:cityName`} component={Weather} />
+          </Switch>
         </div>
       );
     }
   }
-  export default Cities;
+  export default withRouter(Cities);

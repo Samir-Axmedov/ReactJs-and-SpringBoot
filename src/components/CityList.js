@@ -11,7 +11,7 @@ const CityList = (props) => {
         console.log(item);
         return (
           <li key={item}>
-            <Link to={'${url}/${item}'}>{item}</Link>
+            <Link to={`${url}/${item}`}>{item}</Link>
           </li>
         );
       })}
