@@ -1,12 +1,25 @@
 import React from 'react';
 import logo from '../logo.svg';
 
-function Header( props ) {
+// es5 function
+//function Header( props ) {}
+
+//es6 fundtion
+const Header = (props) => {
     console.log(props);
     console.log(props.cityName);
 
-    const cityName = props.cityName;
+    //es5
+    //const cityName = props.cityName;
 
+    //es6
+    /*
+    props = {
+        cityName : 'Seoul'
+    }
+    */
+    const {cityName} = props;
+    
     return (
         <header className="App-header">
             <div>{cityName}</div>
