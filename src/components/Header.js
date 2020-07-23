@@ -5,21 +5,19 @@ import logo from '../logo.svg';
 //function Header( props ) {}
 
 //es6 fundtion
-const Header = (props) => {
-    console.log(props);
-    console.log(props.cityName);
+const Header = ({cityName}) => {
+    //console.log(props);
+    //console.log(props.cityName);
 
     //es5
     //const cityName = props.cityName;
 
     //es6
     /*
-    props = {
-        cityName : 'Seoul'
-    }
+    props = {cityName : 'Seoul'}
     */
-    const {cityName} = props;
-    
+    //const {cityName} = props;
+
     return (
         <header className="App-header">
             <div>{cityName}</div>
