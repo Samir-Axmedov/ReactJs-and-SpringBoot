@@ -6,18 +6,6 @@ import logo from '../logo.svg';
 
 //es6 fundtion
 const Header = ({cityName}) => {
-    //console.log(props);
-    //console.log(props.cityName);
-
-    //es5
-    //const cityName = props.cityName;
-
-    //es6
-    /*
-    props = {cityName : 'Seoul'}
-    */
-    //const {cityName} = props;
-
     return (
         <header className="App-header">
             <div>{cityName}</div>
