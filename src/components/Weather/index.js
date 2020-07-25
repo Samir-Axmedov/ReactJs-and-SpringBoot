@@ -6,7 +6,7 @@ const Weather = (props) => {
 
     return (
         <div>
-            <h1>Weather : {cityName}</h1>
+            <h1>Weather: {cityName}</h1>
             <p>Here is front page.!</p>
         </div>
     );

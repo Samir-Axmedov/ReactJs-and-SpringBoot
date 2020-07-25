@@ -1,7 +1,8 @@
 import React from 'react';
 import { Switch, Route, withRouter} from "react-router";
 import CityList from "./CityList"
-import Weather from "./Weather/index";
+import Weather from "./Weather/WeatherDetail";
+//import Weather from "./Weather/index";
 
 const API_CITIES = 'http://localhost:8888/weather-service/available-cities';
 
@@ -21,6 +22,7 @@ class Cities extends React.Component {
             cities: data,
           });
         });
+        console.log(cities, citiesData);
     }
     render() {
       const { match } = this.props;
