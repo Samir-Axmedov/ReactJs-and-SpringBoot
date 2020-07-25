@@ -1,22 +1,23 @@
 import React from 'react';
-import { withRouter} from "react-router";
-
-//const { cityName } = this.props.match.parmas;
-const API_WEATHERDETAIL = 'http://localhost:8888/weather-service/weathers?cityName=Heunghae';
 
 class WeatherDetail extends React.Component {
     state = {
+        cityName: '',
         main: '',
         description: '',
         temp : 0.0
     };
     componentDidMount(){
+        const { cityName } = this.props.match.params;
+        const API_WEATHERDETAIL = 'http://localhost:8888/weather-service/weathers?cityName='+cityName;
+
         console.log("WeatherDetail component");
 
         const WEATHERData = fetch(API_WEATHERDETAIL)
         .then((res) => res.json())
         .then((data) => {
           this.setState({
+            cityName: cityName,
             main: data.weather[0].main,
             description: data.weather[0].description,
             temp: data.main.temp
@@ -27,14 +28,14 @@ class WeatherDetail extends React.Component {
     render() {
         return (
             <div>
+                <h1>cityName : {this.state.cityName}</h1>
                 <h1>main : {this.state.main}</h1>
                 <h1>description : {this.state.description}</h1>
-                <h1>temp: {this.state.temp}</h1>
-                <p>Here is front page.!</p>
+                <h1>temp: {(this.state.temp - 273.15).toFixed(2)}</h1>
             </div>
         );
     }
 }
 
-export default withRouter(WeatherDetail);
+export default WeatherDetail;
 
