@@ -22,7 +22,9 @@ class WeatherDetail extends React.Component {
             description: data.weather[0].description,
             temp: data.main.temp
           });
-        });
+        })
+        .catch(err=> console.log(err));
+        
         console.log(WEATHERData);
     }
     render() {
